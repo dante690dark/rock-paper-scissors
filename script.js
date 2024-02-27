@@ -1,75 +1,75 @@
 let computerPoints = 0,
   myPoints = 0;
 
-const tools = ["rock", "paper", "scissors"];
+const TOOLS = ['rock', 'paper', 'scissors'];
 
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) => {
   switch (computerSelection) {
-    case "rock":
-      if (playerSelection == "rock") {
+    case 'rock':
+      if (playerSelection == 'rock') {
         return {
-          event: "Computer choose Rock, You choose Rock",
-          result: "Tied!",
+          event: 'Computer choose Rock, You choose Rock',
+          result: 'Tied!',
           computer: 0,
           me: 0,
         };
-      } else if (playerSelection == "paper") {
+      } else if (playerSelection == 'paper') {
         return {
-          event: "Computer choose Rock, You choose Paper",
-          result: "you Win! Paper beats Rock",
+          event: 'Computer choose Rock, You choose Paper',
+          result: 'you Win! Paper beats Rock',
           computer: 0,
           me: 1,
         };
       } else {
         return {
-          event: "Computer choose Rock, You choose Scissors",
-          result: "You Lose! Rock beats Scissors",
+          event: 'Computer choose Rock, You choose Scissors',
+          result: 'You Lose! Rock beats Scissors',
           computer: 1,
           me: 0,
         };
       }
-    case "paper":
-      if (playerSelection == "rock") {
+    case 'paper':
+      if (playerSelection == 'rock') {
         return {
-          event: "Computer choose Paper, You choose Rock",
-          result: "You Lose! Paper beats Rock",
+          event: 'Computer choose Paper, You choose Rock',
+          result: 'You Lose! Paper beats Rock',
           computer: 1,
           me: 0,
         };
-      } else if (playerSelection == "paper") {
+      } else if (playerSelection == 'paper') {
         return {
-          event: "Computer Choose Paper, You choose Paper",
-          result: "Tied!",
+          event: 'Computer Choose Paper, You choose Paper',
+          result: 'Tied!',
           computer: 0,
           me: 0,
         };
       } else {
         return {
-          event: "Computer choose Paper, You choose Scissors",
-          result: "You Win! Scissors beats Paper",
+          event: 'Computer choose Paper, You choose Scissors',
+          result: 'You Win! Scissors beats Paper',
           computer: 0,
           me: 1,
         };
       }
-    case "scissors":
-      if (playerSelection == "rock") {
+    case 'scissors':
+      if (playerSelection == 'rock') {
         return {
-          event: "Computer choose Scissors, You Choose Rock",
-          result: "You Win! Rock beats Scissors",
+          event: 'Computer choose Scissors, You Choose Rock',
+          result: 'You Win! Rock beats Scissors',
           computer: 0,
           me: 1,
         };
-      } else if (playerSelection == "paper") {
+      } else if (playerSelection == 'paper') {
         return {
-          event: "Computer choose Scissors, You choose Paper",
-          result: "You Lose! Scissors beats Paper",
+          event: 'Computer choose Scissors, You choose Paper',
+          result: 'You Lose! Scissors beats Paper',
           computer: 1,
           me: 0,
         };
       } else {
         return {
-          event: "Computer choose Scissors, You choose Scissors",
-          result: "Tied!",
+          event: 'Computer choose Scissors, You choose Scissors',
+          result: 'Tied!',
           computer: 0,
           me: 0,
         };
@@ -78,7 +78,7 @@ function playRound(playerSelection, computerSelection) {
     default:
       return {
         event: "You didn't do anything",
-        result: "You Lose!",
+        result: 'You Lose!',
         computer: 0,
         me: 1,
       };
@@ -87,26 +87,28 @@ function playRound(playerSelection, computerSelection) {
 
 const getComputerChoice = () => {
   const choice = Math.floor(Math.random() * 3);
-  return tools[choice];
+  return TOOLS[choice];
 };
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Please select").toLocaleLowerCase();
-    const computerSelection = getComputerChoice();
-    const { event, result, computer, me } = playRound(
-      playerSelection,
-      computerSelection
-    );
-    computerPoints += computer;
-    myPoints += me;
-    console.log(event);
-    console.log(result);
-    console.log(computerPoints, "computer points");
-    console.log(myPoints, "my points");
-    console.log(`round ${i + 1}`);
-    if (computerPoints == 3 || myPoints == 3) return;
-  }
-}
+let rock = document.querySelector('#rock');
+let paper = document.querySelector('#paper');
+let scissors = document.querySelector('#scissors');
 
-game();
+
+rock.addEventListener('click', () => {
+
+  const computerSelection = getComputerChoice();
+  return playRound(TOOLS[0], computerSelection)
+})
+
+paper.addEventListener('click', () => {
+  const computerSelection = getComputerChoice();
+  return playRound(TOOLS[1], computerSelection)
+  
+})
+
+scissors.addEventListener('click', () => {
+  const computerSelection = getComputerChoice();
+  return playRound(TOOLS[2], computerSelection)
+  
+})
