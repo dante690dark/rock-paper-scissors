@@ -1,12 +1,38 @@
 let computerPoints = 0,
-  myPoints = 0;
+  myPoints = 0, 
+  round = 0;
 
 const TOOLS = ['rock', 'paper', 'scissors']
+
+const getComputerChoice = () => {
+  const choice = Math.floor(Math.random() * 3)
+  return TOOLS[choice]
+};
+
+const playGame = (playerSelection) => { 
+  const computerSelection = getComputerChoice()
+  const {computer, player} = playRound(playerSelection, computerSelection)
+
+  myPoints += player
+  computerPoints += computer
+  round++
+
+  console.log('my points', myPoints)
+  console.log('computer points', computerPoints)
+  console.log('round',round)
+
+  if(myPoints === 5 || computerPoints === 5) {
+    resultGame()
+    myPoints = 0
+    computerPoints = 0
+    round = 0
+  }  
+}
 
 const playRound = (playerSelection, computerSelection) => {
   switch (computerSelection) {
     case 'rock':
-      if (playerSelection == 'rock') {
+      if (playerSelection === 'rock') {
         return {
           event: 'Computer choose Rock, You choose Rock',
           result: 'Tied!',
@@ -51,7 +77,7 @@ const playRound = (playerSelection, computerSelection) => {
           player: 1,
         };
       }
-    case 'scissors':
+    default:
       if (playerSelection == 'rock') {
         return {
           event: 'Computer choose Scissors, You Choose Rock',
@@ -74,39 +100,19 @@ const playRound = (playerSelection, computerSelection) => {
           player: 0,
         };
       }
-
-    default:
-      return {
-        event: "You didn't do anything",
-        result: 'You Lose!',
-        computer: 0,
-        player: 1,
-      };
   }
 }
 
+const resultGame = () => {
+  console.log(myPoints)
+  console.log(computerPoints)
+}
 
-const getComputerChoice = () => {
-  const choice = Math.floor(Math.random() * 3)
-  return TOOLS[choice]
-};
-
+//Events
 let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
 let scissors = document.querySelector('#scissors')
 let result = document.querySelector('#result')
-
-const playGame = (playerSelection) => { 
-  const computerSelection = getComputerChoice()
-  const {computer, player, event} = playRound(playerSelection, computerSelection)
-  console.log('my point', player)
-  console.log('the computer',computer)
-  console.log('event',event)
-  myPoints += player
-  computerPoints += computer
-  prueba()
-}
-
 
 rock.addEventListener('click', () => {
   playGame(TOOLS[0])
@@ -120,8 +126,3 @@ scissors.addEventListener('click', () => {
   playGame(TOOLS[2])
 })
 
-
-const prueba = () => {
-  console.log(myPoints)
-  console.log(computerPoints)
-}
