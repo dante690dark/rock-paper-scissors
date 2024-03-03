@@ -1,5 +1,5 @@
 let computerPoints = 0,
-  myPoints = 0, 
+  playerPoints = 0, 
   round = 0;
 
 const TOOLS = ['rock', 'paper', 'scissors']
@@ -13,17 +13,15 @@ const playGame = (playerSelection) => {
   const computerSelection = getComputerChoice()
   const {computer, player} = playRound(playerSelection, computerSelection)
 
-  myPoints += player
+  playerPoints += player
   computerPoints += computer
   round++
 
-  console.log('my points', myPoints)
-  console.log('computer points', computerPoints)
-  console.log('round',round)
+  player
 
-  if(myPoints === 5 || computerPoints === 5) {
+  if(playerPoints === 5 || computerPoints === 5) {
     resultGame()
-    myPoints = 0
+    playerPoints = 0
     computerPoints = 0
     round = 0
   }  
@@ -104,7 +102,7 @@ const playRound = (playerSelection, computerSelection) => {
 }
 
 const resultGame = () => {
-  console.log(myPoints)
+  console.log(playerPoints)
   console.log(computerPoints)
 }
 

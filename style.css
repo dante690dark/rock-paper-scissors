@@ -1,0 +1,9 @@
+
+
+.table{
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+    justify-content: center;
+
+}
