@@ -1,6 +1,8 @@
 let computerPoints = 0,
   playerPoints = 0, 
-  round = 0;
+  round = 0,
+  eventMessage,
+  resultMessage;
 
 const TOOLS = ['rock', 'paper', 'scissors']
 
@@ -11,25 +13,30 @@ const getComputerChoice = () => {
 
 const playGame = (playerSelection) => { 
   const computerSelection = getComputerChoice()
-  const {computer, player} = playRound(playerSelection, computerSelection)
+  const {event, result, computer, player} = playRound(playerSelection, computerSelection)
 
   playerPoints += player
   computerPoints += computer
+
+  eventMessage = event  
+  resultMessage = result
   round++
 
   // TODO: remove it when you finish
   console.log(`Round: ${round}\nComputer: ${computerPoints}\nPlayer: ${playerPoints}`)
-  
+
   if(playerPoints === 5 || computerPoints === 5) {
     resultGame() 
     
     setTimeout(() => {
       playerPoints === 5 ? alert('You Win!') : alert('You Lose!')
       resetGame()
+      getMessage()
     }, 100); 
   }
 
   resultGame()
+  getMessage()
 }
 
 const playRound = (playerSelection, computerSelection) => {
@@ -111,6 +118,10 @@ const resultGame = () => {
   computerScore.textContent = `Point: ${computerPoints}`
 }
 
+const getMessage = () => {
+  content.textContent = computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage} ${resultMessage}` : null 
+}
+
 const resetGame = () => { 
   playerPoints = 0
   computerPoints = 0
@@ -120,15 +131,22 @@ const resetGame = () => {
 }
 
 //Events
-let rock = document.querySelector('#rock')
-let paper = document.querySelector('#paper')
-let scissors = document.querySelector('#scissors')
-let playerScore = document.querySelector('#player-score')
-let computerScore = document.querySelector('#computer-score')
+const rock = document.querySelector('#rock')
+const paper = document.querySelector('#paper')
+const scissors = document.querySelector('#scissors')
+const playerScore = document.querySelector('#player-score')
+const computerScore = document.querySelector('#computer-score')
+
+const message = document.querySelector('#message')
+const content = document.createElement('div')
+content.classList.add('content')
+
+message.appendChild(content)
+
 
 rock.addEventListener('click', () => {
   playGame(TOOLS[0])
-  })
+})
 
 paper.addEventListener('click', () => {
   playGame(TOOLS[1])
@@ -139,3 +157,4 @@ scissors.addEventListener('click', () => {
 })
 
 resultGame()
+getMessage()
