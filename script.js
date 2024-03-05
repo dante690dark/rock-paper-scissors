@@ -17,14 +17,19 @@ const playGame = (playerSelection) => {
   computerPoints += computer
   round++
 
-  player
-
+  // TODO: remove it when you finish
+  console.log(`Round: ${round}\nComputer: ${computerPoints}\nPlayer: ${playerPoints}`)
+  
   if(playerPoints === 5 || computerPoints === 5) {
-    resultGame()
-    playerPoints = 0
-    computerPoints = 0
-    round = 0
-  }  
+    resultGame() 
+    
+    setTimeout(() => {
+      playerPoints === 5 ? alert('You Win!') : alert('You Lose!')
+      resetGame()
+    }, 100); 
+  }
+
+  resultGame()
 }
 
 const playRound = (playerSelection, computerSelection) => {
@@ -102,15 +107,24 @@ const playRound = (playerSelection, computerSelection) => {
 }
 
 const resultGame = () => {
-  console.log(playerPoints)
-  console.log(computerPoints)
+  playerScore.textContent =  `Point: ${playerPoints}` 
+  computerScore.textContent = `Point: ${computerPoints}`
+}
+
+const resetGame = () => { 
+  playerPoints = 0
+  computerPoints = 0
+  round = 0
+
+  resultGame()
 }
 
 //Events
 let rock = document.querySelector('#rock')
 let paper = document.querySelector('#paper')
 let scissors = document.querySelector('#scissors')
-let result = document.querySelector('#result')
+let playerScore = document.querySelector('#player-score')
+let computerScore = document.querySelector('#computer-score')
 
 rock.addEventListener('click', () => {
   playGame(TOOLS[0])
@@ -124,3 +138,4 @@ scissors.addEventListener('click', () => {
   playGame(TOOLS[2])
 })
 
+resultGame()
