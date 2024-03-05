@@ -2,7 +2,7 @@ let computerPoints = 0,
   playerPoints = 0, 
   round = 0,
   eventMessage,
-  resultMessage;
+  resultMessage
 
 const TOOLS = ['rock', 'paper', 'scissors']
 
@@ -119,7 +119,8 @@ const resultGame = () => {
 }
 
 const getMessage = () => {
-  content.textContent = computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage} ${resultMessage}` : null 
+  content.innerHTML= computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage}<br>${resultMessage}` : null
+  content.style.textAlign = 'center'
 }
 
 const resetGame = () => { 
@@ -131,16 +132,15 @@ const resetGame = () => {
 }
 
 //Events
-const rock = document.querySelector('#rock')
-const paper = document.querySelector('#paper')
-const scissors = document.querySelector('#scissors')
-const playerScore = document.querySelector('#player-score')
-const computerScore = document.querySelector('#computer-score')
+const rock = document.querySelector('#rock'),
+      paper = document.querySelector('#paper'),
+      scissors = document.querySelector('#scissors'),
+      playerScore = document.querySelector('#player-score'),
+      computerScore = document.querySelector('#computer-score'),
+      message = document.querySelector('#message'),
+      content = document.createElement('div')
 
-const message = document.querySelector('#message')
-const content = document.createElement('div')
 content.classList.add('content')
-
 message.appendChild(content)
 
 
