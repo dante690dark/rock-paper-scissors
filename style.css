@@ -1,11 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  }
 
 
-.container{
+body{
+    background-color: black;
+    color: white;
+}
+
+
+section{
     display: flex;
     flex-direction: row;
     justify-content: center;   
+    align-items: center;
+    padding: 40px;
+    gap: 20px;
 }
 
-.container.players {
+section.players {
     gap: 20%;
 }

@@ -41,21 +41,21 @@ const playRound = (playerSelection, computerSelection) => {
     case 'rock':
       if (playerSelection === 'rock') {
         return {
-          event: 'Computer choose Rock, You choose Rock',
+          event: 'You choose Rock, Computer choose Rock',
           result: 'Tied!',
           computer: 0,
           player: 0,
         };
       } else if (playerSelection == 'paper') {
         return {
-          event: 'Computer choose Rock, You choose Paper',
+          event: ' You choose Paper, Computer choose Rock',
           result: 'You Win! Paper beats Rock',
           computer: 0,
           player: 1,
         };
       } else {
         return {
-          event: 'Computer choose Rock, You choose Scissors',
+          event: 'You choose Scissors, Computer choose Rock',
           result: 'You Lose! Rock beats Scissors',
           computer: 1,
           player: 0,
@@ -64,21 +64,21 @@ const playRound = (playerSelection, computerSelection) => {
     case 'paper':
       if (playerSelection == 'rock') {
         return {
-          event: 'Computer choose Paper, You choose Rock',
+          event: 'You choose Rock, Computer choose Paper',
           result: 'You Lose! Paper beats Rock',
           computer: 1,
           player: 0,
         };
       } else if (playerSelection == 'paper') {
         return {
-          event: 'Computer Choose Paper, You choose Paper',
+          event: 'You choose Paper, Computer Choose Paper',
           result: 'Tied!',
           computer: 0,
           player: 0,
         };
       } else {
         return {
-          event: 'Computer choose Paper, You choose Scissors',
+          event: 'You choose Scissors, Computer choose Paper',
           result: 'You Win! Scissors beats Paper',
           computer: 0,
           player: 1,
@@ -87,21 +87,21 @@ const playRound = (playerSelection, computerSelection) => {
     default:
       if (playerSelection == 'rock') {
         return {
-          event: 'Computer choose Scissors, You Choose Rock',
+          event: 'You Choose Rock, Computer choose Scissors',
           result: 'You Win! Rock beats Scissors',
           computer: 0,
           player: 1,
         };
       } else if (playerSelection == 'paper') {
         return {
-          event: 'Computer choose Scissors, You choose Paper',
+          event: 'You choose Paper, Computer choose Scissors',
           result: 'You Lose! Scissors beats Paper',
           computer: 1,
           player: 0,
         };
       } else {
         return {
-          event: 'Computer choose Scissors, You choose Scissors',
+          event: 'You choose Scissors, Computer choose Scissors',
           result: 'Tied!',
           computer: 0,
           player: 0,
