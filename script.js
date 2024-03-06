@@ -22,9 +22,6 @@ const playGame = (playerSelection) => {
   resultMessage = result
   round++
 
-  // TODO: remove it when you finish
-  console.log(`Round: ${round}\nComputer: ${computerPoints}\nPlayer: ${playerPoints}`)
-
   if(playerPoints === 5 || computerPoints === 5) {
     resultGame() 
     
@@ -52,7 +49,7 @@ const playRound = (playerSelection, computerSelection) => {
       } else if (playerSelection == 'paper') {
         return {
           event: 'Computer choose Rock, You choose Paper',
-          result: 'you Win! Paper beats Rock',
+          result: 'You Win! Paper beats Rock',
           computer: 0,
           player: 1,
         };
