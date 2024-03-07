@@ -1,112 +1,157 @@
 let computerPoints = 0,
-  myPoints = 0;
+  playerPoints = 0, 
+  round = 0,
+  eventMessage,
+  resultMessage
 
-const tools = ["rock", "paper", "scissors"];
-
-function playRound(playerSelection, computerSelection) {
-  switch (computerSelection) {
-    case "rock":
-      if (playerSelection == "rock") {
-        return {
-          event: "Computer choose Rock, You choose Rock",
-          result: "Tied!",
-          computer: 0,
-          me: 0,
-        };
-      } else if (playerSelection == "paper") {
-        return {
-          event: "Computer choose Rock, You choose Paper",
-          result: "you Win! Paper beats Rock",
-          computer: 0,
-          me: 1,
-        };
-      } else {
-        return {
-          event: "Computer choose Rock, You choose Scissors",
-          result: "You Lose! Rock beats Scissors",
-          computer: 1,
-          me: 0,
-        };
-      }
-    case "paper":
-      if (playerSelection == "rock") {
-        return {
-          event: "Computer choose Paper, You choose Rock",
-          result: "You Lose! Paper beats Rock",
-          computer: 1,
-          me: 0,
-        };
-      } else if (playerSelection == "paper") {
-        return {
-          event: "Computer Choose Paper, You choose Paper",
-          result: "Tied!",
-          computer: 0,
-          me: 0,
-        };
-      } else {
-        return {
-          event: "Computer choose Paper, You choose Scissors",
-          result: "You Win! Scissors beats Paper",
-          computer: 0,
-          me: 1,
-        };
-      }
-    case "scissors":
-      if (playerSelection == "rock") {
-        return {
-          event: "Computer choose Scissors, You Choose Rock",
-          result: "You Win! Rock beats Scissors",
-          computer: 0,
-          me: 1,
-        };
-      } else if (playerSelection == "paper") {
-        return {
-          event: "Computer choose Scissors, You choose Paper",
-          result: "You Lose! Scissors beats Paper",
-          computer: 1,
-          me: 0,
-        };
-      } else {
-        return {
-          event: "Computer choose Scissors, You choose Scissors",
-          result: "Tied!",
-          computer: 0,
-          me: 0,
-        };
-      }
-
-    default:
-      return {
-        event: "You didn't do anything",
-        result: "You Lose!",
-        computer: 0,
-        me: 1,
-      };
-  }
-}
+const TOOLS = ['rock', 'paper', 'scissors']
 
 const getComputerChoice = () => {
-  const choice = Math.floor(Math.random() * 3);
-  return tools[choice];
+  const choice = Math.floor(Math.random() * 3)
+  return TOOLS[choice]
 };
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Please select").toLocaleLowerCase();
-    const computerSelection = getComputerChoice();
-    const { event, result, computer, me } = playRound(
-      playerSelection,
-      computerSelection
-    );
-    computerPoints += computer;
-    myPoints += me;
-    console.log(event);
-    console.log(result);
-    console.log(computerPoints, "computer points");
-    console.log(myPoints, "my points");
-    console.log(`round ${i + 1}`);
-    if (computerPoints == 3 || myPoints == 3) return;
+const playGame = (playerSelection) => { 
+  const computerSelection = getComputerChoice()
+  const {event, result, computer, player} = playRound(playerSelection, computerSelection)
+
+  playerPoints += player
+  computerPoints += computer
+
+  eventMessage = event  
+  resultMessage = result
+  round++
+
+  if(playerPoints === 5 || computerPoints === 5) {
+    resultGame() 
+    
+    setTimeout(() => {
+      playerPoints === 5 ? alert('You Win!') : alert('You Lose!')
+      resetGame()
+      getMessage()
+    }, 100); 
+  }
+
+  resultGame()
+  getMessage()
+}
+
+const playRound = (playerSelection, computerSelection) => {
+  switch (computerSelection) {
+    case 'rock':
+      if (playerSelection === 'rock') {
+        return {
+          event: 'You choose Rock, Computer choose Rock',
+          result: 'Tied!',
+          computer: 0,
+          player: 0,
+        };
+      } else if (playerSelection == 'paper') {
+        return {
+          event: ' You choose Paper, Computer choose Rock',
+          result: 'You Win! Paper beats Rock',
+          computer: 0,
+          player: 1,
+        };
+      } else {
+        return {
+          event: 'You choose Scissors, Computer choose Rock',
+          result: 'You Lose! Rock beats Scissors',
+          computer: 1,
+          player: 0,
+        };
+      }
+    case 'paper':
+      if (playerSelection == 'rock') {
+        return {
+          event: 'You choose Rock, Computer choose Paper',
+          result: 'You Lose! Paper beats Rock',
+          computer: 1,
+          player: 0,
+        };
+      } else if (playerSelection == 'paper') {
+        return {
+          event: 'You choose Paper, Computer Choose Paper',
+          result: 'Tied!',
+          computer: 0,
+          player: 0,
+        };
+      } else {
+        return {
+          event: 'You choose Scissors, Computer choose Paper',
+          result: 'You Win! Scissors beats Paper',
+          computer: 0,
+          player: 1,
+        };
+      }
+    default:
+      if (playerSelection == 'rock') {
+        return {
+          event: 'You Choose Rock, Computer choose Scissors',
+          result: 'You Win! Rock beats Scissors',
+          computer: 0,
+          player: 1,
+        };
+      } else if (playerSelection == 'paper') {
+        return {
+          event: 'You choose Paper, Computer choose Scissors',
+          result: 'You Lose! Scissors beats Paper',
+          computer: 1,
+          player: 0,
+        };
+      } else {
+        return {
+          event: 'You choose Scissors, Computer choose Scissors',
+          result: 'Tied!',
+          computer: 0,
+          player: 0,
+        };
+      }
   }
 }
 
-game();
+const resultGame = () => {
+  playerScore.textContent =  `Point: ${playerPoints}` 
+  computerScore.textContent = `Point: ${computerPoints}`
+}
+
+const getMessage = () => {
+  content.innerHTML= computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage}<br>${resultMessage}` : null
+  content.style.textAlign = 'center'
+}
+
+const resetGame = () => { 
+  playerPoints = 0
+  computerPoints = 0
+  round = 0
+
+  resultGame()
+}
+
+//Events
+const rock = document.querySelector('#rock'),
+      paper = document.querySelector('#paper'),
+      scissors = document.querySelector('#scissors'),
+      playerScore = document.querySelector('#player-score'),
+      computerScore = document.querySelector('#computer-score'),
+      message = document.querySelector('#message'),
+      content = document.createElement('div')
+
+content.classList.add('content')
+message.appendChild(content)
+
+
+rock.addEventListener('click', () => {
+  playGame(TOOLS[0])
+})
+
+paper.addEventListener('click', () => {
+  playGame(TOOLS[1])
+})
+
+scissors.addEventListener('click', () => {
+  playGame(TOOLS[2])
+})
+
+resultGame()
+getMessage()

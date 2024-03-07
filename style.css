@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+
+body{
+    background-color: black;
+    color: #99536B;
+}
+
+
+header{
+    padding-top: 10px;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+    align-items: center;
+    padding: 40px;
+    gap: 20px;
+}
+
+section.players {
+    
+    gap: 20%;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
