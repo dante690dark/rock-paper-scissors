@@ -8,9 +8,13 @@
 
 body{
     background-color: black;
-    color: white;
+    color: #99536B;
 }
 
+
+header{
+    padding-top: 10px;
+}
 
 section{
     display: flex;
@@ -22,5 +26,11 @@ section{
 }
 
 section.players {
+    
     gap: 20%;
+}
+
+button {
+    border: none;
+    background-color: transparent;
 }
