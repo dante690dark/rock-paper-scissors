@@ -32,6 +32,8 @@ const playGame = (playerSelection) => {
     }, 100); 
   }
 
+  modal.style.display = 'block';
+
   resultGame()
   getMessage()
 }
@@ -135,6 +137,8 @@ const rock = document.querySelector('#rock'),
       playerScore = document.querySelector('#player-score'),
       computerScore = document.querySelector('#computer-score'),
       message = document.querySelector('#message'),
+      modal = document.querySelector('#modal'),
+      closeContent = document.querySelector('#close'),
       content = document.createElement('div')
 
 content.classList.add('content')
@@ -153,5 +157,13 @@ scissors.addEventListener('click', () => {
   playGame(TOOLS[2])
 })
 
+closeContent.addEventListener('click', () => {
+  modal.style.display = 'none';
+})
+
 resultGame()
 getMessage()
+
+
+
+
