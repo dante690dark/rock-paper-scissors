@@ -13,7 +13,7 @@ body{
 
 
 header{
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 section{
@@ -21,16 +21,56 @@ section{
     flex-direction: row;
     justify-content: center;   
     align-items: center;
-    padding: 40px;
+    padding: 15px;
     gap: 20px;
 }
 
 section.players {
-    
     gap: 20%;
 }
 
 button {
     border: none;
     background-color: transparent;
+    
 }
+
+img {
+    cursor: pointer;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: black;
+    border-radius: 21px;
+    margin: 15% auto;
+    padding: 20px;
+   
+    width: 40%;
+    box-shadow: #99536B 0px 0px 0px 2px, #99536B 0px 4px 6px -1px, #99536B 0px 1px 0px inset;
+}
+
+#close {
+    color: #99536B;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+    color: #83465b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
