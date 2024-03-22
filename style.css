@@ -7,13 +7,13 @@
 
 
 body{
-    /* background-color: black; */
+    background-color: black;
     color: #99536B;
 }
 
 
 header{
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 section{
@@ -26,17 +26,18 @@ section{
 }
 
 section.players {
-    
     gap: 20%;
 }
 
 button {
     border: none;
     background-color: transparent;
+    
 }
 
-
-
+img {
+    cursor: pointer;
+}
 
 #modal {
     display: none;
@@ -51,23 +52,25 @@ button {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: black;
+    border-radius: 21px;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+   
+    width: 40%;
+    box-shadow: #99536B 0px 0px 0px 2px, #99536B 0px 4px 6px -1px, #99536B 0px 1px 0px inset;
 }
 
 #close {
-    color: #aaa;
-    float: right;
+    color: #99536B;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
+#close:hover,
+#close:focus {
+    color: #83465b;
     text-decoration: none;
     cursor: pointer;
 }
+

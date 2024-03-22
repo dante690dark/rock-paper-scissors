@@ -23,19 +23,27 @@ const playGame = (playerSelection) => {
   round++
 
   if(playerPoints === 5 || computerPoints === 5) {
-    resultGame() 
     
     setTimeout(() => {
-      playerPoints === 5 ? alert('You Win!') : alert('You Lose!')
-      resetGame()
-      getMessage()
-    }, 100); 
+
+      if(playerPoints === 5) {
+        content.textContent = 'Congratulation You Win this match!' 
+      }else{
+        content.textContent = 'Sorry You Lose this match!'
+      }
+
+      closeContent.textContent = "play again"
+    }, 50); 
   }
 
   modal.style.display = 'block';
+  closeContent.textContent = "continue"
+
+  content.innerHTML = computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage}<br>${resultMessage}` : null
+  content.style.textAlign = 'center'
 
   resultGame()
-  getMessage()
+  
 }
 
 const playRound = (playerSelection, computerSelection) => {
@@ -117,11 +125,6 @@ const resultGame = () => {
   computerScore.textContent = `Point: ${computerPoints}`
 }
 
-const getMessage = () => {
-  content.innerHTML= computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage}<br>${resultMessage}` : null
-  content.style.textAlign = 'center'
-}
-
 const resetGame = () => { 
   playerPoints = 0
   computerPoints = 0
@@ -144,7 +147,6 @@ const rock = document.querySelector('#rock'),
 content.classList.add('content')
 message.appendChild(content)
 
-
 rock.addEventListener('click', () => {
   playGame(TOOLS[0])
 })
@@ -159,11 +161,10 @@ scissors.addEventListener('click', () => {
 
 closeContent.addEventListener('click', () => {
   modal.style.display = 'none';
+
+  if(playerPoints === 5 || computerPoints === 5) {
+    resetGame() 
+  }
 })
 
 resultGame()
-getMessage()
-
-
-
-
