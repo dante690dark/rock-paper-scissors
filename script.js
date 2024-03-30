@@ -32,12 +32,12 @@ const playGame = (playerSelection) => {
         content.textContent = 'Sorry You Lose this match!'
       }
 
-      closeContent.textContent = "play again"
+      close.textContent = "play again"
     }, 50); 
   }
 
   modal.style.display = 'block';
-  closeContent.textContent = "continue"
+  close.textContent = "continue"
 
   content.innerHTML = computerPoints || playerPoints || resultMessage === 'Tied!' ? `${eventMessage}<br>${resultMessage}` : null
   content.style.textAlign = 'center'
@@ -134,14 +134,14 @@ const resetGame = () => {
 }
 
 //Events
-const rock = document.querySelector('#rock'),
-      paper = document.querySelector('#paper'),
-      scissors = document.querySelector('#scissors'),
+const rock = document.querySelector('#button-rock'),
+      paper = document.querySelector('#button-paper'),
+      scissors = document.querySelector('#button-scissors'),
       playerScore = document.querySelector('#player-score'),
       computerScore = document.querySelector('#computer-score'),
       message = document.querySelector('#message'),
-      modal = document.querySelector('#modal'),
-      closeContent = document.querySelector('#close'),
+      close = document.querySelector('#close'),
+      modal = document.querySelector('.modal'),
       content = document.createElement('div')
 
 content.classList.add('content')
@@ -159,7 +159,7 @@ scissors.addEventListener('click', () => {
   playGame(TOOLS[2])
 })
 
-closeContent.addEventListener('click', () => {
+close.addEventListener('click', () => {
   modal.style.display = 'none';
 
   if(playerPoints === 5 || computerPoints === 5) {

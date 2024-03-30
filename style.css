@@ -1,115 +1,115 @@
 @font-face {
-    font-family: 'Amatic-bold';
-    src: url('./assets/fonts/Amatic-Bold.ttf');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Amatic-bold';
+	src: url('./assets/fonts/Amatic-Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Amatic-regular';
-    src: url('./assets/fonts/AmaticSC-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Amatic-regular';
+	src: url('./assets/fonts/AmaticSC-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
     margin: 0;
-    padding: 0;
     text-align: center;
+    padding: 0;
   }
 
 
 body{
-    background-color: black;
-    color: #99536B;
-    font-family: 'Amatic-regular';
-    font-size: 36px;
+	background-color: black;
+	color: #99536B;
+	font-family: 'Amatic-regular';
+	font-size: 36px;
 }
 
 
 header{
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 30px;
 }
 
-header div {
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    font-family: 'Amatic-bold';
-    gap: 70px;
-    padding: 15px;
+.title {
+	display: flex;
+	flex-direction:row;
+	justify-content: center;
+	gap: 70px;
+	padding: 15px;
+	font-family: 'Amatic-bold';
+	font-size: 70px;
 }
 
 .content{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;   
-    align-items: center;
-    padding: 30px;
-    gap: 90px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;   
+	align-items: center;
+	padding: 30px;
+	gap: 90px;
 }
 
 .content-elements {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+img {
+	cursor: pointer;
 }
 
 .players{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;   
-    align-items: center;
-    padding: 15px;
-    gap: 15%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;   
+	align-items: center;
+	padding: 15px;
+	gap: 15%;
 }
-
 
 button {
-    border: none;
-    background-color: transparent;
-    
+	border: none;
+	background-color: transparent;
 }
 
-img {
-    cursor: pointer;
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: black;
-    border-radius: 21px;
-    margin: 15% auto;
-    padding: 20px;
-    width: 40%;
-    box-shadow: #99536B 0px 0px 0px 2px, #99536B 0px 4px 6px -1px, #99536B 0px 1px 0px inset;
+.card {
+	background-color: black;
+	border-radius: 21px;
+	margin: 15% auto;
+	padding: 20px;
+	width: 40%;
+	box-shadow: #99536B 0px 0px 0px 2px, #99536B 0px 4px 6px -1px, #99536B 0px 1px 0px inset;
 }
 
 #close {
-    color: #99536B;
-    font-size: 28px;
-    font-weight: bold;
+	color: #99536B;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 #close:hover,
 #close:focus {
-    color: #83465b;
-    text-decoration: none;
-    cursor: pointer;
+	color: #83465b;
+	text-decoration: none;
+	cursor: pointer;
 }
 
