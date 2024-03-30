@@ -1,33 +1,73 @@
+@font-face {
+    font-family: 'Amatic-bold';
+    src: url('./assets/fonts/Amatic-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Amatic-regular';
+    src: url('./assets/fonts/AmaticSC-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     text-align: center;
-    font-family: "Times New Roman", Times, serif;
   }
 
 
 body{
     background-color: black;
     color: #99536B;
+    font-family: 'Amatic-regular';
+    font-size: 36px;
 }
 
 
 header{
     padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-section{
+header div {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    font-family: 'Amatic-bold';
+    gap: 70px;
+    padding: 15px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+    align-items: center;
+    padding: 30px;
+    gap: 90px;
+}
+
+.content-elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.players{
     display: flex;
     flex-direction: row;
     justify-content: center;   
     align-items: center;
     padding: 15px;
-    gap: 20px;
+    gap: 15%;
 }
 
-section.players {
-    gap: 20%;
-}
 
 button {
     border: none;
@@ -56,7 +96,6 @@ img {
     border-radius: 21px;
     margin: 15% auto;
     padding: 20px;
-   
     width: 40%;
     box-shadow: #99536B 0px 0px 0px 2px, #99536B 0px 4px 6px -1px, #99536B 0px 1px 0px inset;
 }
