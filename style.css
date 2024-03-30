@@ -65,6 +65,18 @@ img {
 	cursor: pointer;
 }
 
+#rock{
+	margin-left: 70px;
+}
+
+#paper{
+ 	margin-left: 30px;
+}
+
+#scissors{
+	margin-right: 90px;
+}
+
 .players{
 	display: flex;
 	flex-direction: row;
@@ -103,6 +115,7 @@ button {
 #close {
 	color: #99536B;
 	font-size: 28px;
+	font-family: 'Amatic-regular';
 	font-weight: bold;
 }
 
