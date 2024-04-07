@@ -144,7 +144,6 @@ const rock = document.querySelector('#button-rock'),
       modal = document.querySelector('.modal'),
       content = document.createElement('div')
 
-content.classList.add('content')
 message.appendChild(content)
 
 rock.addEventListener('click', () => {

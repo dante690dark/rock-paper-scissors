@@ -45,7 +45,7 @@ header{
 	font-size: 70px;
 }
 
-.content{
+.container{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;   
@@ -54,12 +54,11 @@ header{
 	gap: 90px;
 }
 
-.content-elements {
+.container-elements {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
-
 
 img {
 	cursor: pointer;
